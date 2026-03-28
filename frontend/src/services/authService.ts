@@ -9,7 +9,7 @@ export const authService = {
     lastName: string,
   ) => {
     const res = await api.post(
-      "auth/signup",
+      "/auth/signup",
       { username, password, email, firstName, lastName },
       { withCredentials: true },
     );
@@ -27,16 +27,16 @@ export const authService = {
   },
 
   signOut: async () => {
-    return api.post("auth/signout", { withCredentials: true });
+    return api.post("/auth/signout", { withCredentials: true });
   },
 
   fetchMe: async () => {
-    const res = await api.get("users/me", { withCredentials: true });
+    const res = await api.get("/users/me", { withCredentials: true });
     return res.data.user;
   },
 
   refresh: async () => {
-    const res = await api.post("auth/refresh", { withCredentials: true });
+    const res = await api.post("/auth/refresh", { withCredentials: true });
     return res.data.accessToken;
   },
 };
